@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://deqre4nnamn18"]
+
+[ext_resource type="PackedScene" uid="uid://cyk50v17psa7f" path="res://core/game/core_minigame.tscn" id="1_1p57d"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/min_trasher.gd" id="2_61kng"]
+[ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="4_3xu2x"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2okqh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xa15o"]
+
+[sub_resource type="Gradient" id="Gradient_efwnk"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mxaqi"]
+gradient = SubResource("Gradient_efwnk")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hew71"]
+
+[node name="min_squareinator" instance=ExtResource("1_1p57d")]
+script = ExtResource("2_61kng")
+main_music = null
+metadata/_edit_lock_ = true
+
+[node name="Background" parent="." index="1"]
+visible = false
+
+[node name="UI" parent="." index="2"]
+mouse_filter = 2
+
+[node name="Label" parent="UI" index="1"]
+offset_top = -156.0
+offset_bottom = -84.0
+
+[node name="Node3D" type="Node3D" parent="." index="3"]
+metadata/_edit_lock_ = true
+
+[node name="Sun" type="DirectionalLight3D" parent="Node3D" index="0"]
+transform = Transform3D(-0.772716, -0.495624, 0.396569, 0.508682, -0.109817, 0.853922, -0.379674, 0.861567, 0.336973, 8.62438, 6.30366, 3.86679)
+
+[node name="PointLight" type="OmniLight3D" parent="Node3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31237, -1.46019, -0.0772679)
+light_color = Color(1, 0.282353, 0.407843, 1)
+light_energy = 1.82
+light_indirect_energy = 1.484
+light_size = 0.222
+light_specular = 0.662
+omni_range = 7.72635
+
+[node name="Camera" type="Camera3D" parent="Node3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3347)
+keep_aspect = 0
+projection = 1
+size = 9.94797
+
+[node name="Taskbar" type="Node3D" parent="Node3D" index="3"]
+transform = Transform3D(10.0081, 0, 0, 0, 0.581056, 0, 0, 0, 2.29852, 0, -2.50704, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Taskbar" index="0"]
+physics_material_override = SubResource("PhysicsMaterial_2okqh")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Taskbar/StaticBody3D" index="0"]
+shape = SubResource("BoxShape3D_xa15o")
+metadata/_edit_lock_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/Taskbar" index="1"]
+transform = Transform3D(-1.70859e-08, -100.403, 0, 0.390879, -4.38876e-06, 0, 0, 0, 0.910943, 0, 0, -1.09739)
+texture = SubResource("GradientTexture1D_mxaqi")
+
+[node name="Icon" parent="Node3D" index="4" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464107, 0, 0)
+
+[node name="Icon2" parent="Node3D" index="5" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09564, -1.37207, 0)
+
+[node name="Icon3" parent="Node3D" index="6" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31495, -1.37207, -0.0583408)
+
+[node name="Wall1" type="StaticBody3D" parent="Node3D" index="7"]
+transform = Transform3D(1.16335, 0, 0, 0, 5.7135, 0, 0, 0, 1.16335, -5.56032, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Wall1" index="0"]
+shape = SubResource("BoxShape3D_hew71")
+
+[node name="RayCast3D" type="RayCast3D" parent="Node3D" index="8"]
