@@ -1,19 +1,33 @@
-[gd_scene load_steps=9 format=3 uid="uid://deqre4nnamn18"]
+[gd_scene load_steps=14 format=3 uid="uid://deqre4nnamn18"]
 
 [ext_resource type="PackedScene" uid="uid://cyk50v17psa7f" path="res://core/game/core_minigame.tscn" id="1_1p57d"]
 [ext_resource type="Script" path="res://game/minigames/min_trasher/min_trasher.gd" id="2_61kng"]
+[ext_resource type="Texture2D" uid="uid://d17orihbil8mg" path="res://game/minigames/min_trasher/textures/tex_wallpaper.png" id="3_axess"]
 [ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="4_3xu2x"]
+[ext_resource type="PackedScene" uid="uid://dm3vfwexb8nqv" path="res://game/minigames/min_trasher/objects/trash_icon.tscn" id="4_5y3k8"]
+[ext_resource type="PackedScene" uid="uid://s0l5i0usprwm" path="res://game/minigames/min_trasher/objects/icon_antigravity.tscn" id="5_m83sx"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2okqh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xa15o"]
+size = Vector3(1.49173, 2.38324, 1)
 
 [sub_resource type="Gradient" id="Gradient_efwnk"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0.298039, 0.686275, 1, 0.482353, 0.513726, 1, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_mxaqi"]
 gradient = SubResource("Gradient_efwnk")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hew71"]
+size = Vector3(1.69237, 7.04337, 2.38293)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mf6vo"]
+size = Vector3(14.8596, 0.558106, 2.46655)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_hoghk"]
+height = 2.20689
+radius = 0.406498
 
 [node name="min_squareinator" instance=ExtResource("1_1p57d")]
 script = ExtResource("2_61kng")
@@ -33,10 +47,17 @@ offset_bottom = -84.0
 [node name="Node3D" type="Node3D" parent="." index="3"]
 metadata/_edit_lock_ = true
 
-[node name="Sun" type="DirectionalLight3D" parent="Node3D" index="0"]
-transform = Transform3D(-0.772716, -0.495624, 0.396569, 0.508682, -0.109817, 0.853922, -0.379674, 0.861567, 0.336973, 8.62438, 6.30366, 3.86679)
+[node name="Scene" type="Node3D" parent="Node3D" index="0"]
 
-[node name="PointLight" type="OmniLight3D" parent="Node3D" index="1"]
+[node name="Wallpaper" type="Sprite3D" parent="Node3D/Scene" index="0"]
+transform = Transform3D(0.459591, 0, 0, 0, 0.459591, 0, 0, 0, 0.459591, 0, 0, -6.62147)
+modulate = Color(0.388235, 0.388235, 0.388235, 1)
+texture = ExtResource("3_axess")
+
+[node name="Sun" type="DirectionalLight3D" parent="Node3D/Scene" index="1"]
+transform = Transform3D(-0.772716, -0.495624, 0.396569, 0.508682, -0.109817, 0.853922, -0.379674, 0.861567, 0.336972, 8.62438, 6.30366, 3.86679)
+
+[node name="PointLight" type="OmniLight3D" parent="Node3D/Scene" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.31237, -1.46019, -0.0772679)
 light_color = Color(1, 0.282353, 0.407843, 1)
 light_energy = 1.82
@@ -45,40 +66,70 @@ light_size = 0.222
 light_specular = 0.662
 omni_range = 7.72635
 
-[node name="Camera" type="Camera3D" parent="Node3D" index="2"]
+[node name="Camera" type="Camera3D" parent="Node3D/Scene" index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3347)
 keep_aspect = 0
 projection = 1
-size = 9.94797
+size = 11.5
 
-[node name="Taskbar" type="Node3D" parent="Node3D" index="3"]
-transform = Transform3D(10.0081, 0, 0, 0, 0.581056, 0, 0, 0, 2.29852, 0, -2.50704, 0)
+[node name="Taskbar" type="Node3D" parent="Node3D/Scene" index="4"]
+transform = Transform3D(10.0081, 0, 0, 0, 0.581056, 0, 0, 0, 2.29852, 0, -2.89846, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Taskbar" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D/Scene/Taskbar" index="0"]
 physics_material_override = SubResource("PhysicsMaterial_2okqh")
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Taskbar/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Scene/Taskbar/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000839239, -0.742523, 0)
 shape = SubResource("BoxShape3D_xa15o")
 metadata/_edit_lock_ = true
 
-[node name="Sprite3D" type="Sprite3D" parent="Node3D/Taskbar" index="1"]
-transform = Transform3D(-1.70859e-08, -100.403, 0, 0.390879, -4.38876e-06, 0, 0, 0, 0.910943, 0, 0, -1.09739)
+[node name="Sprite3D" type="Sprite3D" parent="Node3D/Scene/Taskbar" index="1"]
+transform = Transform3D(-1.75776e-08, -115.315, 0, 0.402128, -5.04061e-06, 0, 0, 0, 0.910943, 0, -0.0686641, -1.09739)
 texture = SubResource("GradientTexture1D_mxaqi")
 
-[node name="Icon" parent="Node3D" index="4" instance=ExtResource("4_3xu2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.464107, 0, 0)
+[node name="Walls" type="StaticBody3D" parent="Node3D/Scene" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56032, 0, 0)
 
-[node name="Icon2" parent="Node3D" index="5" instance=ExtResource("4_3xu2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.09564, -1.37207, 0)
-
-[node name="Icon3" parent="Node3D" index="6" instance=ExtResource("4_3xu2x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31495, -1.37207, -0.0583408)
-
-[node name="Wall1" type="StaticBody3D" parent="Node3D" index="7"]
-transform = Transform3D(1.16335, 0, 0, 0, 5.7135, 0, 0, 0, 1.16335, -5.56032, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Wall1" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Scene/Walls" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.03154, 0.278153, 0.00396729)
 shape = SubResource("BoxShape3D_hew71")
 
-[node name="RayCast3D" type="RayCast3D" parent="Node3D" index="8"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Node3D/Scene/Walls" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1698, 0.292138, 0)
+shape = SubResource("BoxShape3D_hew71")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Node3D/Scene/Walls" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.58347, 3.54016, 0.0177002)
+shape = SubResource("BoxShape3D_mf6vo")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Node3D/Scene/Walls" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.446835, -2.63405, 0)
+shape = SubResource("CylinderShape3D_hoghk")
+
+[node name="Objects" type="Node3D" parent="Node3D" index="1"]
+
+[node name="Icon" parent="Node3D/Objects" index="0" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(0.703764, -0.0153159, 0.710269, -0.462727, 0.748737, 0.474634, -0.539074, -0.662691, 0.519847, -4.76208, 2.0243, 0)
+
+[node name="Icon4" parent="Node3D/Objects" index="1" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76208, -0.0586457, 0)
+
+[node name="Icon2" parent="Node3D/Objects" index="2" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(0.99163, 0.0392615, 0.122994, 0.00642453, 0.936456, -0.350726, -0.128949, 0.348581, 0.928366, -3.12176, 2.0243, 0)
+
+[node name="Icon3" parent="Node3D/Objects" index="3" instance=ExtResource("4_3xu2x")]
+transform = Transform3D(0.987804, 0.0353783, 0.151633, 0.000785659, 0.9727, -0.232065, -0.155703, 0.229353, 0.960809, -3.12176, -0.0846825, 0)
+
+[node name="Trash" parent="Node3D/Objects" index="4" instance=ExtResource("4_5y3k8")]
+transform = Transform3D(0.951126, 0.0179778, -0.308279, -0.064441, 0.98788, -0.141209, 0.302004, 0.154173, 0.940757, 4.18757, -1.49409, -0.100528)
+collision_layer = 255
+collision_mask = 1
+axis_lock_linear_z = true
+sleeping = false
+can_sleep = false
+freeze_mode = 0
+max_contacts_reported = 0
+contact_monitor = false
+
+[node name="Icon5" parent="Node3D/Objects" index="5" instance=ExtResource("5_m83sx")]

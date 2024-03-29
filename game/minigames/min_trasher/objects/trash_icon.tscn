@@ -1,0 +1,104 @@
+[gd_scene load_steps=11 format=3 uid="uid://dm3vfwexb8nqv"]
+
+[ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="1_g3s6t"]
+[ext_resource type="ArrayMesh" uid="uid://bv752rtj1ladl" path="res://game/minigames/min_trasher/meshes/trash.res" id="2_3wpb2"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/shrink_dont.gd" id="2_eknte"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/icon_area.gd" id="3_dimfn"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/icon_disable.gd" id="4_tog8o"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_5mc1l"]
+points = PackedVector3Array(-1.3064, 1.00388, 1.17923, -1.10753, 1.00388, 0.999969, -0.863261, -1.00017, 0.779399, -1.06213, -1.03166, 0.958657, -5.96046e-07, -1.03166, 1.24979, -5.96046e-07, 1.00388, 1.51723, -0.000128508, 1.00388, 1.26741, -0.000128508, -1.00017, 0.999969)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2ni7t"]
+points = PackedVector3Array(-0.000268936, -1, -1.24, -0.000268936, -1.2305, -1.20625, -1.07052, -1, -0.966653, 1.07025, -1, -0.966653, -1.04122, -1.2305, -0.940193, 1.04095, -1.2305, -0.940193, -1.33587, -1.2305, -0.00024271, -1.37324, -1, -0.00024271, 1.37324, -1, -0.00024271, 1.3356, -1.2305, -0.00024271, -1.04122, -1.2305, 0.93995, -1.07052, -1, 0.96641, 1.07025, -1, 0.96641, 1.04095, -1.2305, 0.93995, -0.000268936, -1.2305, 1.20601, -0.000268936, -1, 1.24)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_omg7w"]
+radius = 0.532542
+height = 3.14258
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eaalh"]
+radius = 1.0552
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5nc74"]
+height = 0.596444
+radius = 0.493143
+
+[node name="Trash" instance=ExtResource("1_g3s6t")]
+center_of_mass_mode = 1
+center_of_mass = Vector3(0, -0.3, 0)
+is_trash = true
+
+[node name="Shrink" parent="." index="0"]
+script = ExtResource("2_eknte")
+
+[node name="Collision" parent="." index="2"]
+disabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(0.394804, 0, 0, 0, 0.394804, 0, 0, 0, 0.394804, 5.4131e-05, -0.000313911, -0.00319305)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="4"]
+transform = Transform3D(0.28372, 0, -0.273594, 0, 0.394146, 0, 0.273594, 0, 0.28372, -0.099346, 0.00223668, 0.0274354)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="5"]
+transform = Transform3D(0.29327, -1.15106e-08, -0.263331, -1.15106e-08, 0.394146, -3.00479e-08, -0.263331, -3.00479e-08, -0.293271, -0.103295, -0.000313909, -0.00245866)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="6"]
+transform = Transform3D(0.394137, 5.92828e-08, 0.00255895, -5.92527e-08, 0.394146, -4.82647e-09, 0.00255895, -4.44167e-09, -0.394137, -0.00297233, 0.00223667, 0.0173324)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="." index="7"]
+transform = Transform3D(-0.394789, 1.51503e-10, 0.00346598, -1.51503e-10, 0.394804, -3.45142e-08, -0.00346598, -3.45142e-08, -0.394789, -0.000497597, -0.00031391, 0.0222989)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="." index="8"]
+transform = Transform3D(-0.281308, 1.51251e-10, 0.276074, -2.40267e-08, 0.394146, -2.46982e-08, -0.276074, -3.44566e-08, -0.281308, 0.0991676, 0.00223667, -0.00745565)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="." index="9"]
+transform = Transform3D(-0.295571, 1.13976e-08, 0.260746, 1.13976e-08, 0.394146, -4.30883e-09, 0.260746, -4.30883e-09, 0.295571, 0.102854, -0.000313908, 0.0224719)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="." index="10"]
+transform = Transform3D(-0.3941, -5.91683e-08, -0.00601898, -5.96277e-08, 0.394145, 2.96285e-08, -0.00601898, -3.05356e-08, 0.3941, 0.00270895, 0.00223667, 0.00180087)
+shape = SubResource("ConvexPolygonShape3D_5mc1l")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="." index="11"]
+transform = Transform3D(0.417721, 0, 0, 0, 0.417721, 0, 0, 0, 0.417721, 5.4131e-05, 0.0360589, -0.00319305)
+shape = SubResource("ConvexPolygonShape3D_2ni7t")
+
+[node name="ShrinkArea" type="Area3D" parent="." index="12"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.138549, 0)
+collision_layer = 3
+collision_mask = 2
+input_ray_pickable = false
+script = ExtResource("3_dimfn")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShrinkArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32352, 0)
+shape = SubResource("CapsuleShape3D_omg7w")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="ShrinkArea" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14934, 0)
+shape = SubResource("SphereShape3D_eaalh")
+
+[node name="TrashedArea" type="Area3D" parent="." index="13"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.138549, 0)
+collision_layer = 3
+collision_mask = 2
+input_ray_pickable = false
+script = ExtResource("4_tog8o")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="TrashedArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0347503, 0)
+shape = SubResource("CylinderShape3D_5nc74")
+
+[node name="Mesh" parent="." index="14"]
+transform = Transform3D(0.452842, 0, 0, 0, 0.393678, 0, 0, 0, 0.411529, 0, 0, 0)
+mesh = ExtResource("2_3wpb2")
+
+[node name="Label" parent="Cell" index="1"]
+text = "Trash"

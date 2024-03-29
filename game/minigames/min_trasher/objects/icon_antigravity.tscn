@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://s0l5i0usprwm"]
+
+[ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="1_er3r7"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/effect_antigravity.gd" id="2_rxymx"]
+
+[node name="Icon" instance=ExtResource("1_er3r7")]
+
+[node name="Effect" parent="." index="1"]
+script = ExtResource("2_rxymx")
+
+[node name="Label" parent="Cell" index="1"]
+text = "Anti Gravity"

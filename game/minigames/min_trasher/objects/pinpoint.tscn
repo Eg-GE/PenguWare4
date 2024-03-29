@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://di1q01hxb2jo7"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_xhup5"]
+radial_segments = 10
+rings = 10
+
+[node name="Pinpoint" type="AnimatableBody3D"]
+collision_layer = 0
+collision_mask = 0
+input_ray_pickable = false
+
+[node name="Debugmesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.340067, 0, 0, 0, 0.340067, 0, 0, 0, 0.340067, 0, 0, 0)
+mesh = SubResource("SphereMesh_xhup5")

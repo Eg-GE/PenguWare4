@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfcvojtwuxcbq"]
+
+[ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="1_fcw46"]
+
+[node name="Icon" instance=ExtResource("1_fcw46")]
+
+[node name="Collision" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.000732422, -0.00115967)
+
+[node name="Mesh" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1.18875, 0, 0, 0, 0.1, 0, 0, 0)

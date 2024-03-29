@@ -19,10 +19,24 @@ var lineheight : float
 
 var margin = Vector3(0.2,0.2,0)
 
+enum State{
+	NONE,
+	HOVER,
+	SELECTED,
+	ACTIVE,
+	TRASHED
+}
+var mousehover = false
+var cellstate = State.NONE
+
 func _ready():
-	selectobject.modulate.a = 0.0
+	visualize_state()
 	lineheight = fontsize * pixelsize
-	print(lineheight)
+	
+	var posit = Transform3D.IDENTITY.translated(Vector3(0,0,-1))
+	transform = posit
+	$Selection.transform = posit
+	$Label.transform = posit
 	
 	
 func _process(delta):
@@ -48,21 +62,58 @@ func _process(delta):
 	
 	position.x = xpos
 	position.y = ypos
+
+func _input(event):
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+		if mousehover:
+			_change_state(State.ACTIVE)
+		else:
+			_change_state(State.NONE)
+	pass 
 	
 	
 func _on_rigidbody_input_event(camera, event, position, normal, shape_idx):
-	
-	pass 
+	pass
 
 
 func _on_rigidbody_mouse_entered():
-	selectobject.modulate.a = .6
-	
-	
+	mousehover = true
+	if cellstate == State.NONE:
+		_change_state(State.HOVER)
+	elif cellstate == State.SELECTED:
+		_change_state(State.ACTIVE)
+		
 	pass 
 
 
 func _on_rigidbody_mouse_exited():
-	selectobject.modulate.a = 0.0
-	
+	mousehover = false
+	if cellstate == State.HOVER:
+		_change_state(State.NONE)
+	elif cellstate == State.ACTIVE:
+		_change_state(State.SELECTED)
 	pass 
+
+
+
+func _change_state(s) :
+	if cellstate != s :
+		cellstate = s
+		visualize_state()
+
+func visualize_state():
+	match cellstate:
+		
+		State.NONE:
+			selectobject.modulate.a = 0.0
+			
+		State.HOVER:
+			selectobject.modulate.a = .2
+			
+		State.SELECTED:
+			selectobject.modulate.a = .76
+			
+		State.ACTIVE:
+			selectobject.modulate.a = 1
+			
+
