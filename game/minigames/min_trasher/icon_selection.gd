@@ -42,8 +42,13 @@ func _ready():
 func _process(delta):
 	
 	parentglobalpos = get_parent().global_transform.origin
-
-	meshglobalaabb = meshobject.global_transform * meshobject.get_aabb()
+	
+	if "shrink_aabb" in get_parent().find_child("Shrink"):
+		meshglobalaabb = get_parent().find_child("Shrink").shrink_aabb
+		
+	else: 
+		meshglobalaabb = meshobject.global_transform * meshobject.get_aabb()
+	
 	xsize = meshglobalaabb.size.x + (margin.x*2)
 	ysize = meshglobalaabb.size.y + (margin.y*2) + lineheight
 	xpos = parentglobalpos.x

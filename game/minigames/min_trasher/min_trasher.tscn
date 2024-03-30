@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://deqre4nnamn18"]
+[gd_scene load_steps=17 format=3 uid="uid://deqre4nnamn18"]
 
 [ext_resource type="PackedScene" uid="uid://cyk50v17psa7f" path="res://core/game/core_minigame.tscn" id="1_1p57d"]
 [ext_resource type="Script" path="res://game/minigames/min_trasher/min_trasher.gd" id="2_61kng"]
 [ext_resource type="Texture2D" uid="uid://d17orihbil8mg" path="res://game/minigames/min_trasher/textures/tex_wallpaper.png" id="3_axess"]
 [ext_resource type="PackedScene" uid="uid://bg52sqflmggu0" path="res://game/minigames/min_trasher/objects/core_icon.tscn" id="4_3xu2x"]
-[ext_resource type="PackedScene" uid="uid://dm3vfwexb8nqv" path="res://game/minigames/min_trasher/objects/trash_icon.tscn" id="4_5y3k8"]
-[ext_resource type="PackedScene" uid="uid://s0l5i0usprwm" path="res://game/minigames/min_trasher/objects/icon_antigravity.tscn" id="5_m83sx"]
+[ext_resource type="PackedScene" uid="uid://dm3vfwexb8nqv" path="res://game/minigames/min_trasher/icons/icon_trash.tscn" id="4_5y3k8"]
+[ext_resource type="PackedScene" uid="uid://s0l5i0usprwm" path="res://game/minigames/min_trasher/icons/icon_antigravity.tscn" id="5_m83sx"]
+[ext_resource type="PackedScene" uid="uid://c8eefkuf0a7pi" path="res://game/minigames/min_trasher/icons/icon_paper.tscn" id="7_mq8by"]
+[ext_resource type="PackedScene" uid="uid://cotrfujx7hyue" path="res://game/minigames/min_trasher/icons/icon_wallpaper.tscn" id="7_npb3s"]
+[ext_resource type="PackedScene" uid="uid://cvqrhewj8dcke" path="res://game/minigames/min_trasher/icons/icon_ppp.tscn" id="9_7vtj0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2okqh"]
 
@@ -109,19 +112,29 @@ shape = SubResource("CylinderShape3D_hoghk")
 
 [node name="Objects" type="Node3D" parent="Node3D" index="1"]
 
-[node name="Icon" parent="Node3D/Objects" index="0" instance=ExtResource("4_3xu2x")]
+[node name="Icon8" parent="Node3D/Objects" index="0" instance=ExtResource("9_7vtj0")]
+transform = Transform3D(0.766783, -0.00453915, 0.64189, 0.312108, 0.876451, -0.366637, -0.560921, 0.48147, 0.673465, 0, 0, 0)
+
+[node name="Icon6" parent="Node3D/Objects" index="1" instance=ExtResource("7_mq8by")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.54209, 0, 0)
+file_name = "mimi.txt"
+
+[node name="Icon" parent="Node3D/Objects" index="2" instance=ExtResource("4_3xu2x")]
 transform = Transform3D(0.703764, -0.0153159, 0.710269, -0.462727, 0.748737, 0.474634, -0.539074, -0.662691, 0.519847, -4.76208, 2.0243, 0)
+file_name = "Icon4e"
 
-[node name="Icon4" parent="Node3D/Objects" index="1" instance=ExtResource("4_3xu2x")]
+[node name="Icon4" parent="Node3D/Objects" index="3" instance=ExtResource("4_3xu2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76208, -0.0586457, 0)
+file_name = "PaperPilePanic"
 
-[node name="Icon2" parent="Node3D/Objects" index="2" instance=ExtResource("4_3xu2x")]
+[node name="Icon2" parent="Node3D/Objects" index="4" instance=ExtResource("4_3xu2x")]
 transform = Transform3D(0.99163, 0.0392615, 0.122994, 0.00642453, 0.936456, -0.350726, -0.128949, 0.348581, 0.928366, -3.12176, 2.0243, 0)
+file_name = "Generic.exe"
 
-[node name="Icon3" parent="Node3D/Objects" index="3" instance=ExtResource("4_3xu2x")]
+[node name="Icon3" parent="Node3D/Objects" index="5" instance=ExtResource("4_3xu2x")]
 transform = Transform3D(0.987804, 0.0353783, 0.151633, 0.000785659, 0.9727, -0.232065, -0.155703, 0.229353, 0.960809, -3.12176, -0.0846825, 0)
 
-[node name="Trash" parent="Node3D/Objects" index="4" instance=ExtResource("4_5y3k8")]
+[node name="Trash" parent="Node3D/Objects" index="6" instance=ExtResource("4_5y3k8")]
 transform = Transform3D(0.951126, 0.0179778, -0.308279, -0.064441, 0.98788, -0.141209, 0.302004, 0.154173, 0.940757, 4.18757, -1.49409, -0.100528)
 collision_layer = 255
 collision_mask = 1
@@ -131,5 +144,11 @@ can_sleep = false
 freeze_mode = 0
 max_contacts_reported = 0
 contact_monitor = false
+file_name = "Trash Bin"
 
-[node name="Icon5" parent="Node3D/Objects" index="5" instance=ExtResource("5_m83sx")]
+[node name="Icon5" parent="Node3D/Objects" index="7" instance=ExtResource("7_npb3s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.95941, 0)
+
+[node name="AntiGrav" parent="Node3D/Objects" index="8" instance=ExtResource("5_m83sx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.63256, 2.00994, 0)
+file_name = "Zoogle Gravity"

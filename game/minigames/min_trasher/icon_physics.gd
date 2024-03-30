@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @export var is_trash = false
+@export var file_name = "Icon"
 
 var lock_position : float = 0
 
@@ -25,18 +26,24 @@ var pinpointscene = load("res://game/minigames/min_trasher/objects/pinpoint.tscn
 var trash
 
 var deftransform = transform
+var defmeshtransform 
+@onready var behaviour = $Shrink
 
 var targetsize = 1
 var targetvel = 0
 
-var behaviour
+
 var pinguh
 
 func _ready():
 	
-	get_node("../../..").gravity_change.connect(on_gravity_change)
-	behaviour=$Shrink
+	if $Cell/Label != null:
+		$Cell/Label.set("text",file_name)
+		
+	if get_node_or_null("../../..") != null:
+		get_node_or_null("../../..").gravity_change.connect(on_gravity_change)
 	
+	defmeshtransform = get_node("Mesh").transform
 	debug = pinpointscene.instantiate()
 	pinpoint = pinpointscene.instantiate()
 	#add_child(debug)

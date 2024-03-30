@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://cotrfujx7hyue"]
+
+[ext_resource type="PackedScene" uid="uid://c8eefkuf0a7pi" path="res://game/minigames/min_trasher/icons/icon_paper.tscn" id="1_6q7a0"]
+[ext_resource type="Script" path="res://game/minigames/min_trasher/effect_wallpaper.gd" id="2_vuam1"]
+[ext_resource type="ArrayMesh" uid="uid://nfyqpi81e8ck" path="res://game/minigames/min_trasher/meshes/paper_flat.res" id="3_vy0aj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3116s"]
+size = Vector3(1.38525, 1, 0.107666)
+
+[node name="Icon" instance=ExtResource("1_6q7a0")]
+
+[node name="Effect" parent="." index="1"]
+script = ExtResource("2_vuam1")
+
+[node name="Collision" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0065918, -0.00314331, 0.0110082)
+shape = SubResource("BoxShape3D_3116s")
+
+[node name="Mesh" parent="." index="4"]
+transform = Transform3D(-70.4166, -4.37114e-06, 6.60024e-13, -6.15601e-06, 50, -7.54979e-06, 0, -7.54979e-06, -50, 0, 0, 0)
+mesh = ExtResource("3_vy0aj")
+
+[node name="Label" parent="Cell" index="1"]
+text = "tex_wallpaper.png"
